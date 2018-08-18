@@ -1,6 +1,6 @@
 # Idle Sci-Fi 4X
 
-Idle Sci-Fi themed 4X game. Made to learn Angular. Heavily inspired by Starcraft.
+Idle Sci-Fi themed 4X game. Made to learn Angular. Inspired by Heart of Galaxy and Starcraft.
 
 
 # Angular Starts Here
