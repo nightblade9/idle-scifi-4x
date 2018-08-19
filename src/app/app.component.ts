@@ -16,7 +16,7 @@ export class AppComponent {
     return Constants;
   }
 
-  get playerData() {
-    return PlayerData;
+  public harvestResource = (index) => {
+    PlayerData.resources[index] += 1;
   }
 }
