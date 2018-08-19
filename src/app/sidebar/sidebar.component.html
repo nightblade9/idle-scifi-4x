@@ -1,8 +1,5 @@
 <p>Resources:</p>
 <ul>
-  <li><i class="fa fa-cube"></i> 0 As</li>
-  <li><i class="fa fa-leaf"></i> 0 Bs</li>
-  <li><i class="fa fa-diamond"></i> 0 Cs</li>
-  <li><i class="fa fa-magnet"></i> 0 Ds</li>
-  <li><i class="fa fa-bolt"></i> 0 Energy</li>
+  <li *ngFor="let resource of globals.RESOURCES;"><i class="fa fa-{{resource.icon}}"></i> 0 {{resource.name}}</li>
+  <li><i class="fa fa-{{globals.ENERGY_ICON}}"></i> 0 {{globals.ENERGY_NAME}}</li>
 </ul>
