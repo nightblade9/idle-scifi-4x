@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Globals } from './../globals';
+import { Constants } from './../globals';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,8 +13,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  get globals() {
-    return Globals;
+  get constants() {
+    return Constants;
   }  
 
 }

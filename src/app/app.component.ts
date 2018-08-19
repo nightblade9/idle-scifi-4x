@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Constants } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'Idle Sci-Fi 4X';
+
+  
+  get constants() {
+    return Constants;
+  }  
 }
