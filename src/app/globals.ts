@@ -12,3 +12,8 @@ export const Constants = Object.freeze({
     ENERGY_NAME: "Energy",
     ENERGY_ICON: "bolt"
 });
+
+export const PlayerData = {
+    "resources": [0, 0, 0, 0],
+    "energy": 0
+}

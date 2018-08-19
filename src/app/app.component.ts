@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Constants } from './globals';
+import { PlayerData } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +14,9 @@ export class AppComponent {
   
   get constants() {
     return Constants;
-  }  
+  }
+
+  get playerData() {
+    return PlayerData;
+  }
 }
