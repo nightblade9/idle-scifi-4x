@@ -6,8 +6,10 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <!-- we don't do tihs production-style, we expose node_modules -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- couldn't get FontAwesome to install, CDN is fine -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -17,8 +19,8 @@
       <div class="col-sm-2">
         <p>Resources:</p>
         <ul>
-          <li>0 Crystals</li>
-          <li>0 Gas</li>
+          <li><i class="fa fa-cube"></i> 0 Crystals</li>
+          <li><i class="fa fa-leaf"></i> 0 Gas</li>
         </ul>
       </div>
       <div class="col-lg-10">
