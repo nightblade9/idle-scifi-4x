@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Constants } from './globals';
 import { PlayerData } from './globals';
 
+import {interval} from "rxjs";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,12 +21,22 @@ export class AppComponent {
   // Worse yet, we can't even use !blah in our [disabled] attribute. Ouch.
   doesntHaveEnoughResourcesForResourceAFactory = false;
   
+  // c/o https://stackoverflow.com/a/51330020/8641842
+  resourceTimer = interval(1000).subscribe(() => {
+    for (var i = 0; i < PlayerData.factories.length; i++) {
+      var numFactories = PlayerData.factories[i];
+      this.harvestResource(i, numFactories);
+    }
+
+    this.updateResourcesForButtonsStates();
+  });
+
   get constants() {
     return Constants;
   }
 
-  public harvestResource = (index) => {
-    PlayerData.resources[index] += 1;
+  public harvestResource = (index, amount = 1) => {
+    PlayerData.resources[index] += amount;
 
     this.updateResourcesForButtonsStates();
 
@@ -39,9 +51,9 @@ export class AppComponent {
     // redundant but safer
     if (this.playerHasResourcesForFactory(resourceIndex)) {
       PlayerData.resources[resourceIndex] -= this.FACTORY_COST;
-      console.log("You got a factory!"); // lulz
-      this.updateResourcesForButtonsStates();
+      PlayerData.factories[resourceIndex] += 1;
     }
+    this.updateResourcesForButtonsStates();
   }
 
   public playerHasResourcesForFactory = (resourceIndex) => {
