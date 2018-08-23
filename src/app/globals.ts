@@ -15,5 +15,6 @@ export const Constants = Object.freeze({
 
 export const PlayerData = {
     "resources": [0, 0, 0, 0],
-    "energy": 0
+    "energy": 0,
+    "discoveries": [] // A buncha strings saying we discovered XYZ, eg. the cubes factory
 }

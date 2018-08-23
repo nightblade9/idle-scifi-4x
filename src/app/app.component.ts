@@ -9,7 +9,9 @@ import { PlayerData } from './globals';
 })
 
 export class AppComponent {
+
   title = 'Idle Sci-Fi 4X';
+  playerData = PlayerData;
 
   
   get constants() {
