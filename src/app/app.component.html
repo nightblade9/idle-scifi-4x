@@ -9,9 +9,9 @@
       Harvest <i class="fa fa-{{constants.RESOURCES[0].icon}}"></i>
     </button>
 
-    <div *ngIf="playerData.discoveries.includes('resourceAFactory') || playerData.resources[0] >= 10">
+    <div *ngIf="playerData.discoveries.includes('ResourceAFactory') || playerData.resources[0] >= 10">
       <p>Resource buildings</p>
-      <button class="btn btn-primary" (click)="harvestResource(0)">
+      <button class="btn btn-primary" (click)="buildFactory(0)" [disabled]="doesntHaveEnoughResourcesForResourceAFactory">
         Build <i class="fa fa-{{constants.RESOURCES[0].icon}}"></i> Factory
       </button>      
     </div>
