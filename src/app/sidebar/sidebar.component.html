@@ -1,19 +1,19 @@
 <p>Resources:</p>
-<ul>
-  <li *ngFor="let resource of constants.RESOURCES; let i = index">
-    <i class="fa fa-{{resource.icon}}"></i> {{playerData.resources[i]}} {{resource.name}}
-      <span *ngIf="playerData.factories[0] > 0">(+{{playerData.factories[i]}}/s)</span>
-  </li>
-  <li>
+  <div *ngFor="let resource of constants.RESOURCES; let i = index">
+    <p *ngIf="playerData.resources[i] > 0 || playerData.factories[i] > 0">
+      <i class="fa fa-{{resource.icon}}"></i> {{playerData.resources[i]}} {{resource.name}}
+        <span *ngIf="playerData.factories[0] > 0">(+{{playerData.factories[i]}}/s)</span>
+    </p>
+  </div>
+  <p>
     <i class="fa fa-{{constants.ENERGY_ICON}}"></i> {{playerData.energy}} {{constants.ENERGY_NAME}}
-  </li>
-</ul>
+  </p>
 
 <div *ngIf="playerData.factories[0] > 0">
   <p>Factories:</p>
-  <ul>
-      <li *ngFor="let resource of constants.RESOURCES; let i = index">
-        <i class="fa fa-{{resource.icon}}"></i> {{resource.name}} x {{playerData.factories[i]}}
-      </li>
-    </ul>
+  <div  *ngFor="let resource of constants.RESOURCES; let i = index">
+    <p *ngIf="playerData.factories[i] > 0">
+      <i class="fa fa-{{resource.icon}}"></i> {{resource.name}} x {{playerData.factories[i]}}
+    </p>
   </div>
+</div>
