@@ -26,7 +26,6 @@ describe('AppComponent', () => {
 
   it('should render a manual harvesting section', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('#manual-harvesting p').textContent).toContain('Manual harvesting');
   }));
