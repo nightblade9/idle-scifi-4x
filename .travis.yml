@@ -1,0 +1,2 @@
+language: node_js
+# default already installs node, runs "npm install," and "npm test"
