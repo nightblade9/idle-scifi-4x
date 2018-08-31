@@ -1,3 +1,22 @@
+sudo: required
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 language: node_js
+# Cache node modules for faster builds.
+cache:
+  directories:
+    - "node_modules"
 # default already installs node, runs "npm install," and "npm test"
 node_js: "v8.9.1"
+before_script:
+  # mock/fake display
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+install:
+  - npm install
+script:
+  - ng test --watch=false # test once only
