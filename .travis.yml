@@ -1,2 +1,3 @@
 language: node_js
 # default already installs node, runs "npm install," and "npm test"
+node_js: "v8.9.1"
