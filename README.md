@@ -1,5 +1,7 @@
 # Idle Sci-Fi 4X
 
+[![Build Status](https://travis-ci.org/nightblade9/idle-scifi-4x.svg?branch=master)](https://travis-ci.org/nightblade9/idle-scifi-4x)
+
 Idle Sci-Fi themed 4X game. Made to learn Angular. Inspired by Heart of Galaxy and Starcraft.
 
 
