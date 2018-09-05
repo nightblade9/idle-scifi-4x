@@ -6,7 +6,7 @@
     <p>Manual harvesting</p>
 
     <button class="btn btn-primary" (click)="harvestResource(0)">
-      Harvest <i class="fa fa-{{constants.RESOURCES[0].icon}}"></i>
+      Harvest {{ constants.RESOURCES[0].name }} <i class="fa fa-{{constants.RESOURCES[0].icon}}"></i>
     </button>
 
     <div *ngIf="playerData.discoveries.includes('ResourceAFactory') || playerData.resources[0] >= 10">

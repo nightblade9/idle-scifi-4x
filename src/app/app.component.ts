@@ -25,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
   doesntHaveEnoughResourcesForResourceAFactory = false;
   
   ngOnInit() {    
-
     const coreTimer = interval(this.interval);
     this.timerSubscription = coreTimer.subscribe((elapsed) => {
       for (var i = 0; i < PlayerData.factories.length; i++) {
