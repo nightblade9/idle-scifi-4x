@@ -148,4 +148,22 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('#buildings')).toBeTruthy();
     fixture.destroy();
   }));
+
+  it('should buy a Resource A factory after you click the button', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const compiled = fixture.debugElement.nativeElement;
+    fixture.debugElement.componentInstance.playerData.factories = [0];
+
+    // Show the button by adding the discovery
+    fixture.debugElement.componentInstance.playerData.discoveries = ["ResourceAFactory"];
+    fixture.detectChanges();
+
+    var button = compiled.querySelector('#buildings button')
+    
+    expect(fixture.debugElement.componentInstance.playerData.factories[0]).toBe(0);
+    button.click();
+
+    expect(fixture.componentInstance.playerData.factories[0]).toBe(1);
+    fixture.destroy();
+  }));
 });
