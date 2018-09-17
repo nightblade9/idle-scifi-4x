@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Constants } from './../globals';
-import { PlayerData } from './../globals';
+import { PlayerData } from '../services/playerdataservice';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,16 +9,12 @@ import { PlayerData } from './../globals';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(PlayerData) private playerData:PlayerData) { }
 
   ngOnInit() {
   }
 
   get constants() {
     return Constants;
-  }
-  
-  get playerData() {
-    return PlayerData;
   }
 }
