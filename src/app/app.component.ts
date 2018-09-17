@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, Inject, NgZone } from '@angular/core';
 import { Constants } from './globals';
 import { PlayerData } from './services/playerdataservice';
-
-import { interval } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -23,19 +21,23 @@ export class AppComponent implements OnInit, OnDestroy {
   // Worse yet, we can't even use !blah in our [disabled] attribute. Ouch.
   doesntHaveEnoughResourcesForResourceAFactory = false;
   
-  constructor(@Inject(PlayerData) private data:PlayerData) { }
+  constructor(@Inject(PlayerData) private data:PlayerData, private ngZone:NgZone) { }
 
-  ngOnInit() {    
-    const coreTimer = interval(this.interval);
-    this.timerSubscription = coreTimer.subscribe((elapsed) => {
-      for (var i = 0; i < this.data.factories.length; i++) {
-        var numFactories = this.data.factories[i];
-        this.harvestResource(i, numFactories);
-      }
-      this.updateResourcesForButtonsStates();
+  ngOnInit() {
+    // Pattern from: https://christianliebel.com/2016/11/angular-2-protractor-timeout-heres-fix/    
+    this.ngZone.runOutsideAngular(() => {
+      setInterval(() => {
+        this.ngZone.run(() => {
+          // async operation
+          for (var i = 0; i < this.data.factories.length; i++) {
+            var numFactories = this.data.factories[i];
+            this.harvestResource(i, numFactories);
+          }
+          this.updateResourcesForButtonsStates();
+        });
+      }, 1000);
     });
   }
-  
 
   get constants() {
     return Constants;
