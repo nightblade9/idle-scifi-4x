@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -7,8 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have a button to harvest Resource A', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to idlescifi4x!');
+    // Automatically asserts that the element exists
+    page.getHarvesingSection().findElement(by.id("harvestResourceA"));
   });
 });
