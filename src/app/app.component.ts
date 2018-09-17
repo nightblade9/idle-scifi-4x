@@ -23,13 +23,13 @@ export class AppComponent implements OnInit, OnDestroy {
   // Worse yet, we can't even use !blah in our [disabled] attribute. Ouch.
   doesntHaveEnoughResourcesForResourceAFactory = false;
   
-  constructor(@Inject(PlayerData) private playerData:PlayerData) { }
+  constructor(@Inject(PlayerData) private data:PlayerData) { }
 
   ngOnInit() {    
     const coreTimer = interval(this.interval);
     this.timerSubscription = coreTimer.subscribe((elapsed) => {
-      for (var i = 0; i < this.playerData.factories.length; i++) {
-        var numFactories = this.playerData.factories[i];
+      for (var i = 0; i < this.data.factories.length; i++) {
+        var numFactories = this.data.factories[i];
         this.harvestResource(i, numFactories);
       }
       this.updateResourcesForButtonsStates();
@@ -41,29 +41,33 @@ export class AppComponent implements OnInit, OnDestroy {
     return Constants;
   }
 
+  get playerData() {
+    return this.data;
+  }
+
   public harvestResource = (index, amount = 1) => {
-    this.playerData.resources[index] += amount;
+    this.data.resources[index] += amount;
 
     this.updateResourcesForButtonsStates();
 
     // This logic should probably go in a controller/service.
-    if (!this.playerData.discoveries.includes("ResourceAFactory") && this.playerHasResourcesForFactory(0))
+    if (!this.data.discoveries.includes("ResourceAFactory") && this.playerHasResourcesForFactory(0))
     {
-      this.playerData.discoveries.push("ResourceAFactory");
+      this.data.discoveries.push("ResourceAFactory");
     }
   }
 
   public buildFactory = (resourceIndex) => {
     // redundant but safer
     if (this.playerHasResourcesForFactory(resourceIndex)) {
-      this.playerData.resources[resourceIndex] -= this.FACTORY_COST;
-      this.playerData.factories[resourceIndex] += 1;
+      this.data.resources[resourceIndex] -= this.FACTORY_COST;
+      this.data.factories[resourceIndex] += 1;
     }
     this.updateResourcesForButtonsStates();
   }
 
   public playerHasResourcesForFactory = (resourceIndex) => {
-    return this.playerData.resources[resourceIndex] >= this.FACTORY_COST;
+    return this.data.resources[resourceIndex] >= this.FACTORY_COST;
   }
 
   private updateResourcesForButtonsStates = () => {

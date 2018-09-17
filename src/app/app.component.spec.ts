@@ -43,7 +43,6 @@ describe('AppComponent', () => {
   it('should harvest Resource A when you click the button', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.debugElement.nativeElement;
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
 
     var button = compiled.querySelector('#manual-harvesting button')
     
@@ -55,7 +54,6 @@ describe('AppComponent', () => {
 
   it('should increase resources when we call harvestResource', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
 
     fixture.debugElement.componentInstance.harvestResource(0, 1);
     expect(fixture.debugElement.componentInstance.playerData.resources[0]).toEqual(1);
@@ -68,7 +66,6 @@ describe('AppComponent', () => {
 
   it('should discover Resource A factories when the player reaches 10 of resource A', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
 
     fixture.debugElement.componentInstance.harvestResource(0, 9);
     expect(fixture.debugElement.componentInstance.playerData.discoveries).length == 0
@@ -86,7 +83,6 @@ describe('AppComponent', () => {
 
   it('should build a factory if the player has enough 10+ resources', async(() => {
     const fixture = TestBed.createComponent(AppComponent);    
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
 
     fixture.debugElement.componentInstance.harvestResource(0, 19);
     
@@ -103,7 +99,6 @@ describe('AppComponent', () => {
 
   it('should return true for playerHasResourcesForFactory if player has 10+ of that resource', async(() => {
     const fixture = TestBed.createComponent(AppComponent);    
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
     
     fixture.debugElement.componentInstance.harvestResource(0, 9);
     expect(fixture.debugElement.componentInstance.playerHasResourcesForFactory(0)).toBe(false)
@@ -113,7 +108,6 @@ describe('AppComponent', () => {
 
   it('should set doesntHaveEnoughResourcesForResourceAFactory to true if we have less than 10 of resource A', async(() => {
     const fixture = TestBed.createComponent(AppComponent);    
-    fixture.debugElement.componentInstance.playerData.resources = [0, 0];
     
     fixture.debugElement.componentInstance.harvestResource(0, 1);
     expect(fixture.debugElement.componentInstance.doesntHaveEnoughResourcesForResourceAFactory).toBe(true);
@@ -152,10 +146,8 @@ describe('AppComponent', () => {
   it('should buy a Resource A factory after you click the button', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.debugElement.nativeElement;
-    fixture.debugElement.componentInstance.playerData.factories = [0];
 
-    // Show the button by adding the discovery
-    fixture.debugElement.componentInstance.playerData.discoveries = ["ResourceAFactory"];
+    fixture.componentInstance.harvestResource(0, 10)
     fixture.detectChanges();
 
     var button = compiled.querySelector('#buildings button')
