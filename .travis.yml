@@ -20,4 +20,3 @@ install:
   - npm install
 script:
   - ng test --watch=false # test once only
-  - ng e2e
